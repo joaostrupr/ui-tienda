@@ -1,0 +1,65 @@
+/* 
+ * Customized styles for the project 
+ */
+
+.EmptyBox5 {
+    display: block;
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+}
+
+.EmptyBox10 {
+    display: block;
+    width: 100%;
+    height: 10px;
+    overflow: hidden;
+}
+
+.EmptyBox15 {
+    display: block;
+    width: 100%;
+    height: 15px;
+    overflow: hidden;
+}
+
+.EmptyBox20 {
+    display: block;
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+}
+
+.EmptyBox25 {
+    display: block;
+    width: 100%;
+    height: 25px;
+    overflow: hidden;
+}
+
+.EmptyBox30 {
+    display: block;
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+}
+
+.EmptyBox35 {
+    display: block;
+    width: 100%;
+    height: 35px;
+    overflow: hidden;
+}
+
+.EmptyBox40 {
+    display: block;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+
+.ModalButtons {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    float: right;
+}

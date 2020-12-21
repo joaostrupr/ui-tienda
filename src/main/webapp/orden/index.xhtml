@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="title">Index</ui:define>
+    <ui:define name="content">
+        <h:form id="form-list">
+            <p:growl showDetail="true" id="msg" life="3000"/>
+            <p:commandButton value="Nueva" onclick="PF('dlgNuevaOrden').show();"/>
+            <div class="EmptyBox10"/>
+            <p:dataTable value="#{ordenController.ordenes}" 
+                         id="dt-ordenes"
+                         var="orden"
+                         rowKey="#{orden.id}"
+                         selection="#{ordenController.ordenSeleccionada}"
+                         selectionMode="single">
+                <f:facet name="header">
+                    Ordenes
+                </f:facet>
+                <p:ajax event="rowUnselect"/>
+                <p:ajax event="rowSelect" listener="#{ordenController.editar()}"/>
+                <p:column headerText="Id">
+                    <h:outputText value="#{orden.id}"/>
+                </p:column>
+                <p:column headerText="Cliente">
+                    <h:outputText value="#{orden.cliente.nombres.concat(' ').concat(orden.cliente.apellidos)}"/>
+                </p:column>
+                <p:column headerText="Producto">
+                    <h:outputText value="#{orden.producto.nombre}"/>
+                </p:column>
+                <p:column headerText="Cantidad">
+                    <h:outputText value="#{orden.cantidad}"/>
+                </p:column>
+                <p:column headerText="Fecha Orden">
+                    <h:outputText value="#{orden.fecha}">
+                    </h:outputText>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Modificar" process="dt-ordenes" update="form-editar" oncomplete="PF('dlgModificarOrden').show()"/>
+                    <p:commandButton value="Eliminar" actionListener="#{ordenController.eliminar()}" update="form-list:msg form-list:dt-ordenes"/>
+                </f:facet>
+            </p:dataTable>
+            <p:dialog header="Nueva Orden" widgetVar="dlgNuevaOrden" modal="true">
+                <p:outputLabel value="Cliente"/>
+
+                <p:selectOneMenu value="#{ordenController.idCliente}">
+                    <p:ajax/>
+                    <f:selectItems value="#{ordenController.clientes}" var="cliente"
+                                   itemLabel="#{cliente.nombres.concat(' ').concat(cliente.apellidos)}"
+                                   itemValue="#{cliente.id}"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="Producto"/>
+                <p:spacer/>
+                <p:selectOneMenu value="#{ordenController.idProducto}">
+                    <p:ajax/>
+                    <f:selectItems value="#{ordenController.productos}" var="producto"
+                                   itemLabel="#{producto.nombre}" itemValue="#{producto.id}"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="Cantidad"/>
+                <p:spacer/>
+                <p:inputNumber value="#{ordenController.cantidad}"/>
+                <p:commandButton value="Guardar" actionListener="#{ordenController.guardar()}" update="msg dt-ordenes" oncomplete="PF('dlgNuevaOrden').hide()"/>
+            </p:dialog>
+
+        </h:form>
+        <h:form id="form-editar">
+            <p:dialog header="Modificar Orden" widgetVar="dlgModificarOrden" modal="true">
+                <p:outputPanel id="panel-orden">
+                    <p:outputLabel value="Cliente"/>
+                    <div class="EmptyBox5"/>
+                    <p:selectOneMenu value="#{ordenController.idCliente}">
+                        <f:selectItems value="#{ordenController.clientes}" var="cliente"
+                                       itemLabel="#{cliente.nombres.concat(' ').concat(cliente.apellidos)}"
+                                       itemValue="#{cliente.id}"/>
+                    </p:selectOneMenu>
+                    <div class="EmptyBox10"/>
+                    <p:outputLabel value="Producto"/>
+                    <div class="EmptyBox5"/>
+                    <p:selectOneMenu value="#{ordenController.idProducto}">
+                        <f:selectItems value="#{ordenController.productos}" var="producto"
+                                       itemLabel="#{producto.nombre}" itemValue="#{producto.id}"/>
+                    </p:selectOneMenu>
+                    <div class="EmptyBox10"/>
+                    <p:outputLabel value="Cantidad"/>
+                    <div class="EmptyBox5"/>
+                    <p:inputNumber value="#{ordenController.cantidad}"/>
+                    <div class="EmptyBox10"/>
+                    <div class="ModalButtons">
+                        <p:commandButton value="Actualizar" actionListener="#{ordenController.actualizar()}" update="form-list" oncomplete="PF('dlgModificarOrden').hide()"/>
+                        <p:commandButton value="Cancelar" oncomplete="PF('dlgModificarOrden').hide()"/>
+                    </div>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </ui:define>
+</ui:composition>

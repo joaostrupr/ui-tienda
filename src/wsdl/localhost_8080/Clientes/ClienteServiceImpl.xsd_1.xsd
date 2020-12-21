@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3.payara-p3 (2.4.3.payara-maintenance-a5c1c68; 2019-06-17T14:04:38+0200) JAXWS-RI/2.3.2.payara-p2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://services/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://services/">
+
+<xs:element name="actualizarCliente" type="tns:actualizarCliente"/>
+
+<xs:element name="actualizarClienteResponse" type="tns:actualizarClienteResponse"/>
+
+<xs:element name="agregarCliente" type="tns:agregarCliente"/>
+
+<xs:element name="agregarClienteResponse" type="tns:agregarClienteResponse"/>
+
+<xs:element name="buscarCliente" type="tns:buscarCliente"/>
+
+<xs:element name="buscarClienteResponse" type="tns:buscarClienteResponse"/>
+
+<xs:element name="cliente" type="tns:cliente"/>
+
+<xs:element name="eliminarCliente" type="tns:eliminarCliente"/>
+
+<xs:element name="eliminarClienteResponse" type="tns:eliminarClienteResponse"/>
+
+<xs:element name="listarClientes" type="tns:listarClientes"/>
+
+<xs:element name="listarClientesResponse" type="tns:listarClientesResponse"/>
+
+<xs:complexType name="buscarCliente">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarClienteResponse">
+<xs:sequence>
+<xs:element name="cliente" type="tns:cliente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cliente">
+<xs:sequence>
+<xs:element name="apellidos" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int" minOccurs="0"/>
+<xs:element name="nombres" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarCliente">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarClienteResponse">
+<xs:sequence>
+<xs:element name="respuesta" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarCliente">
+<xs:sequence>
+<xs:element name="arg0" type="tns:cliente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarClienteResponse">
+<xs:sequence>
+<xs:element name="respuesta" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarClientes">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listarClientesResponse">
+<xs:sequence>
+<xs:element name="clientes" type="tns:cliente" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarCliente">
+<xs:sequence>
+<xs:element name="arg0" type="tns:cliente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarClienteResponse">
+<xs:sequence>
+<xs:element name="respuesta" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

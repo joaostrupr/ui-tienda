@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/Productos/ProductoServiceImpl?wsdl" uri="wsdl/localhost_8080/Productos/ProductoServiceImpl.wsdl"/>
+    <system systemId="http://localhost:8080/Productos/ProductoServiceImpl?xsd=1" uri="wsdl/localhost_8080/Productos/ProductoServiceImpl.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Clientes/ClienteServiceImpl?wsdl" uri="wsdl/localhost_8080/Clientes/ClienteServiceImpl.wsdl"/>
+    <system systemId="http://localhost:8080/Clientes/ClienteServiceImpl?xsd=1" uri="wsdl/localhost_8080/Clientes/ClienteServiceImpl.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Ordenes/OrdenServiceImpl?wsdl" uri="wsdl/localhost_8080/Ordenes/OrdenServiceImpl.wsdl"/>
+    <system systemId="http://localhost:8080/Ordenes/OrdenServiceImpl?xsd=1" uri="wsdl/localhost_8080/Ordenes/OrdenServiceImpl.xsd_1.xsd"/>
+</catalog>
